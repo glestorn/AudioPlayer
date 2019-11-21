@@ -1,7 +1,7 @@
 # EnjoyPlayer
-Simple audio player.
-IDE: IntelliJ IDEA.
-Language: Java.
+Simple audio player.<br>
+IDE: IntelliJ IDEA.<br>
+Language: Java.<br>
 Platform: Desktop.
 ### Requirements: ([Ru](/Documents/Requirements/RussianRequirementsDocument.md))
 ### Requirements: ([En](/Documents/Requirements/EnglishRequirementsDocument.md))
