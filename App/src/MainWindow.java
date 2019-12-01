@@ -1,9 +1,11 @@
 import javafx.application.Application;
+import javafx.embed.swing.SwingNode;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 
 public class MainWindow extends Application {
     private Mediator mediator = new Mediator();
@@ -16,10 +18,17 @@ public class MainWindow extends Application {
             primaryStage.setTitle("EnjoyPlayer");
             primaryStage.show();
 
-            Button someButton = new Button();
-            someButton.setMinSize(50,50);
-            someButton.setLayoutX(200);
-            someButton.setLayoutY(200);
+            Label borderForTimer = new Label();
+            borderForTimer.setLayoutX(261);
+            borderForTimer.setLayoutY(26);
+            borderForTimer.setPrefSize(67,45);
+            borderForTimer.setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                new BorderWidths(4, 4, 4, 4))));
+            SwingNode trackTime = new SwingNode();
+            trackTime.setContent(mediator.getActStatePanel().getTrackTime());
+            trackTime.setLayoutX(265);
+            trackTime.setLayoutY(30);
 
             Pane somePane = new Pane();
             somePane.setPrefSize(400,400);
@@ -30,6 +39,9 @@ public class MainWindow extends Application {
             somePane.getChildren().add(mediator.getActStatePanel().getCurrentTime());
             somePane.getChildren().add(mediator.getActStatePanel().getShuffle());
             somePane.getChildren().add(mediator.getActStatePanel().getRepeat());
+            somePane.getChildren().add(borderForTimer);
+            somePane.getChildren().add(trackTime);
+//            somePane.getChildren().add(mediator.getActStatePanel().getTrackTime());
 
             root.getChildren().add(somePane);
         }

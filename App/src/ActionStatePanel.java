@@ -1,12 +1,20 @@
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
+import javafx.scene.paint.Color;
+//import javafx.scene.text.Font;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.TimerTask;
 
 public class ActionStatePanel {
     private Mediator mediator;
@@ -18,14 +26,43 @@ public class ActionStatePanel {
     private Slider currentTime = new Slider();
     private ToggleButton shuffle = new ToggleButton();
     private ToggleButton repeat = new ToggleButton();
+    private JLabel trackTime = new JLabel();
 
     private boolean playStatus = false;
+//    private int counter = 0;
 
     public ActionStatePanel(Mediator mediator) {
         this.mediator = mediator;
         configPlayButtons();
         configFunctionsButtons();
         configSliders();
+
+        trackTime.setSize(70,30);
+
+        new java.util.Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+//                counter++;
+                trackTime.setText(mediator.getTrackTime());
+//                String newTime = mediator.getTrackTime();
+//                if (counter == 2) {
+//                    trackTime.setText(newTime);
+//                    counter = 0;
+//                }
+//                trackTime.setText(newTime);
+//                System.out.println(newTime);
+                double newSliderPosition = mediator.getCurrentSliderPosition();
+                currentTime.setValue(newSliderPosition * 100);
+//                System.out.println(mediator.getTrackTime());
+            }
+        }, 0, 5*100);
+//        trackTime.setText("121:50");
+//        trackTime.setFont(new Font("Arial", 20));
+//        trackTime.setBorder(new Border(new BorderStroke(Color.BLACK,
+//                BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+//                new BorderWidths(4, 4, 4, 4))));
+        trackTime.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+        trackTime.setFont(new java.awt.Font(Font.SERIF, Font.PLAIN, 22));
     }
 
     private void configPlayButtons() {
@@ -61,6 +98,7 @@ public class ActionStatePanel {
 //        volume.setPrefHeight(70);
 //        volume.setShowTickMarks(true);
         volume.setPrefSize(20,70);
+        volume.setValue(100);
         volume.setMajorTickUnit(10);
         volume.setMinorTickCount(0);
 //        volume.setShowTickLabels(true);
@@ -70,7 +108,9 @@ public class ActionStatePanel {
                 (observable, oldValue, newValue) ->
                 {
                     int i = newValue.intValue();
-                    System.out.println("Volume is : " + i);
+//                    System.out.println("Volume is : " + i);
+                    float newVolume = (float)i / 100;
+                    mediator.setNewVolume(newVolume);
                 }
         );
         currentTime.setPrefSize(220,30);
@@ -80,13 +120,20 @@ public class ActionStatePanel {
 //        currentTime.setShowTickLabels(true);
         currentTime.setLayoutX(10);
         currentTime.setLayoutY(60);
-        currentTime.valueProperty().addListener(
-                (observable, oldValue, newValue) ->
-                {
-                    int i = newValue.intValue();
-                    System.out.println("CurrentTime is :" + i);
-                }
-        );
+//        currentTime.valueProperty().addListener(
+//                (observable, oldValue, newValue) ->
+//                {
+//                    int i = newValue.intValue();
+//                    float newTime = (float)i / 100;
+//                    mediator.setNewTrackTime(newTime);
+//                }
+//        );
+        currentTime.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                mediator.setNewVolume((float)(currentTime.getValue() / 100));
+            }
+        });
 
     }
 
@@ -192,5 +239,9 @@ public class ActionStatePanel {
 
     public Slider getVolume() {
         return volume;
+    }
+
+    public JLabel getTrackTime() {
+        return trackTime;
     }
 }
