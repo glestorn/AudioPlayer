@@ -186,7 +186,7 @@ public class ActionStatePanel {
     }
 
     private void configToggleButton(ToggleButton button) {
-        button.setMinSize(50,50);
+        button.setMaxSize(50,50);
     }
 
     private void setCircleButtonBack(Button button, String picture) {
@@ -200,8 +200,8 @@ public class ActionStatePanel {
     private void setToggleButtonBack(ToggleButton button, String picture) {
         Image image = new Image("File:/..pictures/" + picture);
         ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(35);
-        imageView.setFitWidth(35);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
         button.setGraphic(imageView);
     }
 
