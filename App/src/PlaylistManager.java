@@ -28,7 +28,7 @@ public class PlaylistManager {
     private ArrayList<Playlist> playlists = new ArrayList<>();
     private BorderPane root;
 //    private Scene scene;
-    private Button currentButton;
+    private PlaylistButton currentButton;
 
     public PlaylistManager(Mediator mediator, BorderPane root, Scene scene) {
         this.mediator = mediator;
@@ -65,7 +65,7 @@ public class PlaylistManager {
 
                     }
                     else if (event.getButton().equals(MouseButton.SECONDARY)) {
-                        currentButton = ((Button)(event.getSource()));
+                        currentButton = ((PlaylistButton)(event.getSource()));
                         Stage popupWindow = new Stage();
                         popupWindow.setResizable(false);
 
@@ -86,7 +86,9 @@ public class PlaylistManager {
                         deleteFiles.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                             @Override
                             public void handle(MouseEvent event) {
-
+                                deletePlaylist();
+                                popupWindow.close();
+                                refreshArrowsKeys();
                             }
                         });
                         deleteFiles.setLayoutY(25);
@@ -132,9 +134,9 @@ public class PlaylistManager {
                         boolean creatingResult;
                         creatingResult = file.createNewFile();
                         if (creatingResult) {
-                            System.out.println("File was created: " + file.getAbsolutePath());
-                            System.out.println("New playlist name: " + result.get());
-                            playlists.add(new Playlist(result.get(), file.getAbsolutePath()));
+//                            System.out.println("File was created: " + file.getAbsolutePath());
+//                            System.out.println("New playlist name: " + result.get());
+                            playlists.add(new Playlist(result.get(), file.getAbsolutePath().replace("File:\\..\\","")));
                             addPlaylistRefresh();
                         } else {
                             System.out.println("File wasn't created");
@@ -208,6 +210,7 @@ public class PlaylistManager {
                     System.out.println("buttons length: " + playlistsButtons.length);
                     for (int i = 0; i < playlistsButtons.length - 1; i++) {
                         System.out.println(i + " was processed");
+//                        playlistsButtons[i] = playlistsButtons[i + 1];
                         playlistsButtons[i].playlist = playlistsButtons[i + 1].playlist;
                         playlistsButtons[i].setText(playlistsButtons[i].playlist.getPlaylistName());
                     }
@@ -292,8 +295,59 @@ public class PlaylistManager {
         );
         List<File> selectedFiles = fileChooser.showOpenMultipleDialog(new Stage());
         if (selectedFiles != null) {
-
+            currentButton.playlist.addFiles(selectedFiles);
         }
     }
-    //TODO настроить enable of arrow keys
+
+    private void deletePlaylist() {
+        //todo clean tracks field
+        File file = new File(currentButton.playlist.getFilePath());
+        if (file.delete()) {
+//            int index = playlists.indexOf(currentButton.playlist);
+            int buttonIndex = -1;
+            for (int i = 0; i < playlistsButtons.length; i++) {
+                if (playlistsButtons[i].equals(currentButton)) {
+                    buttonIndex = i;
+                }
+            }
+            for (int i = buttonIndex; i < playlistsButtons.length - 1; i++) {
+                if (playlistsButtons[i + 1].playlist == null) {
+                    playlistsButtons[i].playlist = null;
+                    playlistsButtons[i].setText("");
+                    playlistsButtons[i].setDisable(true);
+//                    for (int j = buttonIndex; i < playlistsButtons.length - 1; i++) {
+//                        playlistsButtons[j].setDisable(true);
+//                    }
+                    break;
+                }
+                else {
+                    playlistsButtons[i].playlist = playlistsButtons[i + 1].playlist;
+                    playlistsButtons[i].setText(playlistsButtons[i].playlist.getPlaylistName());
+                }
+            }
+
+            if (playlistsButtons[playlistsButtons.length - 1].playlist != null) {
+                int playlistIndex = playlists.indexOf(
+                        playlistsButtons[playlistsButtons.length - 1].playlist);
+                System.out.println("Index is: " + playlistIndex);
+                if (playlists.size() < playlistIndex + 2) {
+                    playlistsButtons[playlistsButtons.length - 1].playlist = null;
+                    playlistsButtons[playlistsButtons.length - 1].setText("");
+                    playlistsButtons[playlistsButtons.length - 1].setDisable(true);
+                }
+                else {
+                    playlistsButtons[playlistsButtons.length - 1].playlist =
+                            playlists.get(playlistIndex + 1);
+                    playlistsButtons[playlistsButtons.length - 1].setText(
+                            playlistsButtons[playlistsButtons.length - 1].playlist.getPlaylistName());
+                }
+            }
+
+            playlists.remove(currentButton.playlist);
+
+        }
+        else {
+            System.out.println("Deleting failed");
+        }
+    }
 }

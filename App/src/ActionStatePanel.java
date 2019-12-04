@@ -1,16 +1,12 @@
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
-import javafx.scene.paint.Color;
-//import javafx.scene.text.Font;
 
 import javax.swing.*;
 import java.awt.*;
