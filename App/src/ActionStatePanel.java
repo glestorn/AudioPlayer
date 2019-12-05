@@ -25,7 +25,6 @@ public class ActionStatePanel {
     private JLabel trackTime = new JLabel();
 
     private boolean playStatus = false;
-//    private int counter = 0;
 
     public ActionStatePanel(Mediator mediator) {
         this.mediator = mediator;

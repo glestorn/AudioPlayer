@@ -43,4 +43,12 @@ public class Mediator {
     public double getCurrentSliderPosition() {
         return audioPlayer.getCurrentSliderPosition();
     }
+
+    public void startNewTrack(String filePath) {
+        audioPlayer.startNewTrack(filePath);
+    }
+
+    public void resetTrack() {
+        audioPlayer.resetTrack();
+    }
 }

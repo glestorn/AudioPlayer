@@ -8,8 +8,7 @@ import java.io.IOException;
 
 public class AudioPlayerEntity {
     private Mediator mediator;
-    private String filePath = "D:/TheAgedMan.mp3";
-//    private String filePath = "D:/LauncherMusic.wav";
+    private String filePath;
 //    private Long currentFrame;
     private Clip wavClip;
 //    private String status;
@@ -22,28 +21,8 @@ public class AudioPlayerEntity {
     public AudioPlayerEntity(Mediator mediator) {
         this.mediator = mediator;
 
-        if (filePath.endsWith(".wav")) {
-            try {
-                currentTrackFormat = "wav";
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
-                wavClip = AudioSystem.getClip();
-                wavClip.open(audioInputStream);
-                wavClip.loop(Clip.LOOP_CONTINUOUSLY);
-                FloatControl volume = (FloatControl)wavClip.getControl(FloatControl.Type.MASTER_GAIN);
-                volume.setValue(volume.getMaximum());
-            }
-            catch (UnsupportedAudioFileException | IOException |
-                    LineUnavailableException ex) {
-                ex.printStackTrace();
-            }
-        }
-        else if (filePath.endsWith(".mp3")) {
-            currentTrackFormat = "mp3";
-            Media mp3Track = new Media(new File(filePath).toURI().toString());
-            mp3Player = new MediaPlayer(mp3Track);
-            mp3Player.setVolume(1);
-            mp3Player.play();
-        }
+//        startNewTrack("D:/TheAgedMan.mp3");
+//        startNewTrack("D:/LauncherMusic.wav");
     }
 
     public void stopPlayTrack() {
@@ -105,12 +84,14 @@ public class AudioPlayerEntity {
         }
     }
 
-
     public String getCurrentTime() {
         StringBuilder currentTime = new StringBuilder();
         int minutes = 0;
         int seconds = 0;
-        if (currentTrackFormat.equals("mp3")) {
+        if (currentTrackFormat == null) {
+            return "  0:00";
+        }
+        else if (currentTrackFormat.equals("mp3")) {
             double allSeconds = mp3Player.getCurrentTime().toMillis() / 1000;
             minutes = (int)(allSeconds / 60);
             seconds = (int)(allSeconds % 60);
@@ -120,6 +101,7 @@ public class AudioPlayerEntity {
             minutes = (int)(allSeconds / 60);
             seconds = (int)(allSeconds % 60);
         }
+
         if (minutes < 100) {
             currentTime.append(" ");
         }
@@ -137,6 +119,9 @@ public class AudioPlayerEntity {
 
     public double getCurrentSliderPosition() {
         double newValue = 0;
+        if (currentTrackFormat == null) {
+            return 0;
+        }
         if (currentTrackFormat.equals("mp3")) {
             newValue = mp3Player.getCurrentTime().toMillis()
                     / mp3Player.getStopTime().toMillis();
@@ -145,6 +130,53 @@ public class AudioPlayerEntity {
                     / (double)wavClip.getFrameLength();
         }
         return newValue;
+    }
+
+    public void startNewTrack(String filePath) {
+        if (currentTrackFormat != null) {
+            if (currentTrackFormat.equals("mp3")) {
+                mp3Player.stop();
+            } else if (currentTrackFormat.equals("wav")) {
+                wavClip.stop();
+            }
+        }
+
+        this.filePath = filePath;
+
+        if (filePath.endsWith(".wav")) {
+            try {
+                currentTrackFormat = "wav";
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
+                wavClip = AudioSystem.getClip();
+                wavClip.open(audioInputStream);
+                wavClip.loop(Clip.LOOP_CONTINUOUSLY);
+                FloatControl volume = (FloatControl)wavClip.getControl(FloatControl.Type.MASTER_GAIN);
+                volume.setValue(volume.getMaximum());
+            }
+            catch (UnsupportedAudioFileException | IOException |
+                    LineUnavailableException ex) {
+                ex.printStackTrace();
+            }
+        }
+        else if (filePath.endsWith(".mp3")) {
+            currentTrackFormat = "mp3";
+            Media mp3Track = new Media(new File(filePath).toURI().toString());
+            mp3Player = new MediaPlayer(mp3Track);
+            mp3Player.setVolume(1);
+            mp3Player.play();
+        }
+    }
+
+    public void resetTrack() {
+        if (currentTrackFormat != null) {
+            if (currentTrackFormat.equals("mp3")) {
+                mp3Player.stop();
+            }
+            else if (currentTrackFormat.equals("wav")) {
+                wavClip.stop();
+            }
+            currentTrackFormat = null;
+        }
     }
     //TODO try to make Strategy pattern
 }

@@ -1,3 +1,4 @@
+import javafx.scene.text.Font;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -31,11 +32,6 @@ public class Playlist {
         try {
             JSONParser jsonParser = new JSONParser();
             tracks = (JSONArray) jsonParser.parse(new FileReader(filePath));
-
-            if (tracks.toJSONString() != null) {
-                System.out.println(tracks.toString());
-                System.out.println(tracks.get(0).toString());
-            }
         }
         catch (org.json.simple.parser.ParseException ex) {
             System.out.println("File is empty");
@@ -48,7 +44,9 @@ public class Playlist {
             JSONObject newObject = new JSONObject();
             newObject.put("path", file.getAbsolutePath());
             newObject.put("name", file.getName());
-            tracks.add(newObject);
+            if (!tracks.contains(newObject)) {
+                tracks.add(newObject);
+            }
         }
         FileWriter fileToWrite = null;
         try {
@@ -67,5 +65,38 @@ public class Playlist {
                 ex.printStackTrace();
             }
         }
+    }
+
+    public ArrayList<TrackButton> getTracks() {
+        JSONArray tracks = new JSONArray();
+        try {
+            JSONParser jsonParser = new JSONParser();
+            tracks = (JSONArray) jsonParser.parse(new FileReader(filePath));
+        }
+        catch (org.json.simple.parser.ParseException ex) {
+            System.out.println("File is empty");
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        ArrayList<TrackButton> trackButtons = new ArrayList<>();
+        for (int i = 0; i < tracks.size(); i++) {
+            JSONObject object = (JSONObject)tracks.get(i);
+            TrackButton temp = new TrackButton();
+            temp.path = object.get("path").toString();
+            temp.track = object.get("name").toString().substring(0,
+                    object.get("name").toString().indexOf("."));
+            temp.setText(temp.track);
+            temp.setStyle("-fx-border-width: 0;" +
+                "-fx-background-color: whitedef");
+            temp.setFont(new Font(20));
+            temp.setMinWidth(400);
+            trackButtons.add(temp);
+            System.out.println("Track path is: " + temp.path);
+            System.out.println("Track name is: " +temp.track);
+        }
+
+        return trackButtons;
     }
 }
