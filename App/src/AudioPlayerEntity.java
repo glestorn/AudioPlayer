@@ -146,10 +146,17 @@ public class AudioPlayerEntity {
         if (filePath.endsWith(".wav")) {
             try {
                 currentTrackFormat = "wav";
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                        new File(filePath).getAbsoluteFile());
                 wavClip = AudioSystem.getClip();
                 wavClip.open(audioInputStream);
                 wavClip.loop(Clip.LOOP_CONTINUOUSLY);
+                wavClip.addLineListener(new LineListener() {
+                    @Override
+                    public void update(LineEvent event) {
+                        
+                    }
+                });
                 FloatControl volume = (FloatControl)wavClip.getControl(FloatControl.Type.MASTER_GAIN);
                 volume.setValue(volume.getMaximum());
             }
@@ -162,6 +169,12 @@ public class AudioPlayerEntity {
             currentTrackFormat = "mp3";
             Media mp3Track = new Media(new File(filePath).toURI().toString());
             mp3Player = new MediaPlayer(mp3Track);
+            mp3Player.setOnEndOfMedia(new Runnable() {
+                @Override
+                public void run() {
+                    mediator.startNextTrack();
+                }
+            });
             mp3Player.setVolume(1);
             mp3Player.play();
         }
@@ -177,6 +190,10 @@ public class AudioPlayerEntity {
             }
             currentTrackFormat = null;
         }
+    }
+
+    public String getCurrentTrack() {
+        return filePath;
     }
     //TODO try to make Strategy pattern
 }

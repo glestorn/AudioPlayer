@@ -48,7 +48,47 @@ public class Mediator {
         audioPlayer.startNewTrack(filePath);
     }
 
+    public void startNextTrack() {
+        String currentTrack = audioPlayer.getCurrentTrack();
+        if (currentTrack != null) {
+            String newTrack = playlistManager.getNextTrack(currentTrack);
+            if (newTrack != null) {
+                audioPlayer.startNewTrack(newTrack);
+            }
+            else {
+                audioPlayer.resetTrack();
+            }
+        }
+        else {
+            audioPlayer.resetTrack();
+        }
+    }
+
+    public void startPrevTrack() {
+        String currentTrack = audioPlayer.getCurrentTrack();
+        if (currentTrack != null) {
+            String newTrack = playlistManager.getPrevTrack(currentTrack);
+            if (newTrack != null) {
+                audioPlayer.startNewTrack(newTrack);
+            }
+            else {
+                audioPlayer.resetTrack();
+            }
+        }
+        else {
+            audioPlayer.resetTrack();
+        }
+    }
+
     public void resetTrack() {
         audioPlayer.resetTrack();
+    }
+
+    public boolean isRepeatTurnedOn() {
+        return actStatePanel.isRepeatTurnedOn();
+    }
+
+    public boolean isShuffleTurnedOn() {
+        return actStatePanel.isShuffleTurnedOn();
     }
 }

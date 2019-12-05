@@ -9,8 +9,8 @@ import java.util.List;
 
 
 public class Playlist {
-    private ArrayList<String> tracksPaths;
-    private ArrayList<String> tracksNames;
+    private ArrayList<String> tracksPaths = new ArrayList<>();
+    private ArrayList<String> tracksNames = new ArrayList<>();
     private String filePath;
     private String playlistName;
 
@@ -39,6 +39,9 @@ public class Playlist {
         catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        tracksPaths.clear();
+        tracksNames.clear();
 
         for (File file : files) {
             JSONObject newObject = new JSONObject();
@@ -92,11 +95,21 @@ public class Playlist {
                 "-fx-background-color: whitedef");
             temp.setFont(new Font(20));
             temp.setMinWidth(400);
+            tracksPaths.add(temp.path);
+            tracksNames.add(temp.track);
             trackButtons.add(temp);
             System.out.println("Track path is: " + temp.path);
             System.out.println("Track name is: " +temp.track);
         }
 
         return trackButtons;
+    }
+
+    public ArrayList<String> getTracksNames() {
+        return tracksNames;
+    }
+
+    public ArrayList<String> getTracksPaths() {
+        return tracksPaths;
     }
 }

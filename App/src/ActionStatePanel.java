@@ -138,6 +138,7 @@ public class ActionStatePanel {
         nextTrack.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                mediator.startNextTrack();
                 System.out.println("Next track button was clicked!!!");
             }
         });
@@ -149,6 +150,7 @@ public class ActionStatePanel {
         prevTrack.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                mediator.startPrevTrack();
                 System.out.println("Previous track button was clicked!!!");
             }
         });

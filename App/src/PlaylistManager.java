@@ -31,8 +31,7 @@ public class PlaylistManager {
     private ArrayList<Playlist> playlists = new ArrayList<>();
     private BorderPane root;
     private Playlist currentPlaylist = null;
-    //todo check currentPlaylist - it doesn't work
-//    private Scene scene;
+    //    private Scene scene;
     private PlaylistButton currentButton;
 
     public PlaylistManager(Mediator mediator, BorderPane root, Scene scene) {
@@ -60,15 +59,15 @@ public class PlaylistManager {
             playlistsButtons[i].setDisable(true);
             playlistsButtons[i].playlist = null;
             playlistsButtons[i].setMinSize(80, 30);
-            playlistsButtons[i].setMaxSize(80,30);
+            playlistsButtons[i].setMaxSize(80, 30);
 
             playlistsButtons[i].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     if (event.getButton().equals(MouseButton.PRIMARY)) {
-                        currentPlaylist = ((PlaylistButton)(event.getSource())).playlist;
+                        currentPlaylist = ((PlaylistButton) (event.getSource())).playlist;
                         boxForTracksButtons.getChildren().clear();
-                        ArrayList<TrackButton> tracks = ((PlaylistButton)(event.getSource())).
+                        ArrayList<TrackButton> tracks = ((PlaylistButton) (event.getSource())).
                                 playlist.getTracks();
                         for (TrackButton track : tracks) {
                             track.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -79,14 +78,13 @@ public class PlaylistManager {
                             });
                             boxForTracksButtons.getChildren().add(track);
                         }
-                    }
-                    else if (event.getButton().equals(MouseButton.SECONDARY)) {
-                        currentButton = ((PlaylistButton)(event.getSource()));
+                    } else if (event.getButton().equals(MouseButton.SECONDARY)) {
+                        currentButton = ((PlaylistButton) (event.getSource()));
                         Stage popupWindow = new Stage();
                         popupWindow.setResizable(false);
 
                         Button addFiles = new Button();
-                        addFiles.setPrefSize(100,15);
+                        addFiles.setPrefSize(100, 15);
                         addFiles.setText("Add Files");
                         addFiles.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                             @Override
@@ -101,7 +99,7 @@ public class PlaylistManager {
                                         track.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                                             @Override
                                             public void handle(MouseEvent event) {
-                                                mediator.startNewTrack(((TrackButton)(event.getSource())).path);
+                                                mediator.startNewTrack(((TrackButton) (event.getSource())).path);
                                             }
                                         });
                                         boxForTracksButtons.getChildren().add(track);
@@ -112,7 +110,7 @@ public class PlaylistManager {
                         });
                         addFiles.setLayoutY(0);
                         Button deleteFiles = new Button();
-                        deleteFiles.setPrefSize(100,15);
+                        deleteFiles.setPrefSize(100, 15);
                         deleteFiles.setText("Delete Playlist");
                         deleteFiles.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                             @Override
@@ -155,7 +153,7 @@ public class PlaylistManager {
 
             configButtonsBox.getChildren().add(playlistsButtons[i]);
         }
-        addPlaylistButton.setPrefSize(25,30);
+        addPlaylistButton.setPrefSize(25, 30);
         addPlaylistButton.setText("+");
         addPlaylistButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -172,7 +170,7 @@ public class PlaylistManager {
                         creatingResult = file.createNewFile();
                         if (creatingResult) {
                             playlists.add(new Playlist(result.get(),
-                                    file.getAbsolutePath().replace("File:\\..\\","")));
+                                    file.getAbsolutePath().replace("File:\\..\\", "")));
                             addPlaylistRefresh();
                         } else {
                             System.out.println("File wasn't created");
@@ -185,8 +183,8 @@ public class PlaylistManager {
         });
         configButtonsBox.getChildren().add(addPlaylistButton);
 
-        previousPlaylistButton.setMinSize(28,30);
-        previousPlaylistButton.setMaxSize(28,30);
+        previousPlaylistButton.setMinSize(28, 30);
+        previousPlaylistButton.setMaxSize(28, 30);
         previousPlaylistButton.setText("<");
         previousPlaylistButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -210,9 +208,9 @@ public class PlaylistManager {
                         playlistsButtons[i].setText(playlistsButtons[i].playlist.getPlaylistName());
                     }
 //                    if (number + 1 < playlists.size()) {
-                        playlistsButtons[0].playlist = playlists.get(number - 1);
-                        playlistsButtons[0].setText(
-                                playlistsButtons[0].playlist.getPlaylistName());
+                    playlistsButtons[0].playlist = playlists.get(number - 1);
+                    playlistsButtons[0].setText(
+                            playlistsButtons[0].playlist.getPlaylistName());
 //                    }
 //                    else {
 //                        playlistsButtons[playlistsButtons.length - 1].playlist = null;
@@ -224,8 +222,8 @@ public class PlaylistManager {
         });
         configButtonsBox.getChildren().add(previousPlaylistButton);
 
-        nextPlaylistButton.setMinSize(28,30);
-        nextPlaylistButton.setMaxSize(28,30);
+        nextPlaylistButton.setMinSize(28, 30);
+        nextPlaylistButton.setMaxSize(28, 30);
         nextPlaylistButton.setText(">");
         nextPlaylistButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -234,7 +232,7 @@ public class PlaylistManager {
                 if (event.getButton().equals(MouseButton.PRIMARY)) {
                     for (int i = 0; i < playlists.size() - 1; i++) {
                         if (playlists.get(i).equals(playlistsButtons[playlistsButtons.length - 1].playlist)) {
-                           number = i;
+                            number = i;
                         }
                     }
                     if (number == -1) {
@@ -269,6 +267,8 @@ public class PlaylistManager {
         boxForTracksButtons.setPrefSize(400, 370);
         boxForTracksButtons.setLayoutX(0);
         boxForTracksButtons.setLayoutY(230);
+
+        loadPlaylists(new File("File:/../playlists"));
 //        for (Button trackButton : tracks) {
 //            boxForTracksButtons.getChildren().add(trackButton);
 //        }
@@ -283,8 +283,7 @@ public class PlaylistManager {
                 playlistButton.setDisable(false);
                 if (playlists.get(0) == null) {
                     System.out.println("Something went wrong");
-                }
-                else {
+                } else {
                     System.out.println(playlists.get(0).getPlaylistName() + playlists.size());
                 }
                 break;
@@ -296,22 +295,18 @@ public class PlaylistManager {
     private void refreshArrowsKeys() {
         if (playlistsButtons[playlistsButtons.length - 1].playlist == null) {
             nextPlaylistButton.setDisable(true);
-        }
-        else if (playlistsButtons[playlistsButtons.length - 1].playlist.equals(
+        } else if (playlistsButtons[playlistsButtons.length - 1].playlist.equals(
                 playlists.get(playlists.size() - 1))) {
             nextPlaylistButton.setDisable(true);
-        }
-        else {
+        } else {
             nextPlaylistButton.setDisable(false);
         }
 
         if (playlistsButtons[0].playlist == null) {
             previousPlaylistButton.setDisable(true);
-        }
-        else if (playlistsButtons[0].playlist.equals(playlists.get(0))) {
+        } else if (playlistsButtons[0].playlist.equals(playlists.get(0))) {
             previousPlaylistButton.setDisable(true);
-        }
-        else {
+        } else {
             previousPlaylistButton.setDisable(false);
         }
     }
@@ -341,7 +336,6 @@ public class PlaylistManager {
     }
 
     private void deletePlaylist() {
-        //todo clean tracks field (if delete - clean, if add files - refresh)
         File file = new File(currentButton.playlist.getFilePath());
         if (file.delete()) {
 //            int index = playlists.indexOf(currentButton.playlist);
@@ -360,8 +354,7 @@ public class PlaylistManager {
 //                        playlistsButtons[j].setDisable(true);
 //                    }
                     break;
-                }
-                else {
+                } else {
                     playlistsButtons[i].playlist = playlistsButtons[i + 1].playlist;
                     playlistsButtons[i].setText(playlistsButtons[i].playlist.getPlaylistName());
                 }
@@ -375,8 +368,7 @@ public class PlaylistManager {
                     playlistsButtons[playlistsButtons.length - 1].playlist = null;
                     playlistsButtons[playlistsButtons.length - 1].setText("");
                     playlistsButtons[playlistsButtons.length - 1].setDisable(true);
-                }
-                else {
+                } else {
                     playlistsButtons[playlistsButtons.length - 1].playlist =
                             playlists.get(playlistIndex + 1);
                     playlistsButtons[playlistsButtons.length - 1].setText(
@@ -386,9 +378,74 @@ public class PlaylistManager {
 
             playlists.remove(currentButton.playlist);
 
+        } else {
+            System.out.println("Deleting failed");
+        }
+    }
+
+    private void loadPlaylists(final File playlistFolder) {
+        for (File playlist : playlistFolder.listFiles()) {
+            playlists.add(new Playlist(playlist.getName().substring(0, playlist.getName().indexOf(".")),
+                playlist.getAbsolutePath().replace("File:\\..\\","")));
+            addPlaylistRefresh();
+        }
+    }
+
+    public String getNextTrack(String currentTrack) {
+        int currentPosition = currentPlaylist.getTracksPaths().indexOf(currentTrack);
+        if (mediator.isShuffleTurnedOn()) {
+            if (currentPlaylist.getTracksPaths().size() == 1) {
+                return currentTrack;
+            }
+            else {
+                int newTrackPosition;
+                do {
+                    newTrackPosition = (int)(Math.random() * currentPlaylist.getTracksPaths().size());
+                } while (newTrackPosition == currentPosition);
+                return currentPlaylist.getTracksPaths().get(newTrackPosition);
+            }
         }
         else {
-            System.out.println("Deleting failed");
+            if (currentPosition == currentPlaylist.getTracksPaths().size() - 1) {
+                if (mediator.isRepeatTurnedOn()) {
+                    return currentPlaylist.getTracksPaths().get(0);
+                }
+                else {
+                    return null;
+                }
+            }
+            else {
+                return currentPlaylist.getTracksPaths().get(currentPosition + 1);
+            }
+        }
+    }
+
+    public String getPrevTrack(String currentTrack) {
+        int currentPosition = currentPlaylist.getTracksPaths().indexOf(currentTrack);
+        if (mediator.isShuffleTurnedOn()) {
+            if (currentPlaylist.getTracksPaths().size() == 1) {
+                return currentTrack;
+            }
+            else {
+                int newTrackPosition;
+                do {
+                    newTrackPosition = (int)(Math.random() * currentPlaylist.getTracksPaths().size());
+                } while (newTrackPosition == currentPosition);
+                return currentPlaylist.getTracksPaths().get(newTrackPosition);
+            }
+        }
+        else {
+            if (currentPosition == 0) {
+                if (mediator.isRepeatTurnedOn()) {
+                    return currentPlaylist.getTracksPaths().get(currentPlaylist.getTracksPaths().size() - 1);
+                }
+                else {
+                    return null;
+                }
+            }
+            else {
+                return currentPlaylist.getTracksPaths().get(currentPosition - 1);
+            }
         }
     }
 }
