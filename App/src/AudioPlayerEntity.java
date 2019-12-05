@@ -1,3 +1,6 @@
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -20,9 +23,6 @@ public class AudioPlayerEntity {
 
     public AudioPlayerEntity(Mediator mediator) {
         this.mediator = mediator;
-
-//        startNewTrack("D:/TheAgedMan.mp3");
-//        startNewTrack("D:/LauncherMusic.wav");
     }
 
     public void stopPlayTrack() {
@@ -46,7 +46,6 @@ public class AudioPlayerEntity {
 
     public void setVolume(double newVolume) {
         if (currentTrackFormat.equals("mp3")) {
-            System.out.println(newVolume);
             mp3Player.setVolume(newVolume); // from 0 to 1
         }
         else if (currentTrackFormat.equals("wav")) {
@@ -59,7 +58,6 @@ public class AudioPlayerEntity {
             else {
                 newVolumeValue = (float)(newVolume * 2);
                 float middleVolume = newVolumeValue * MINIMUM_VOLUME;
-                System.out.println("Middle Volume: " + middleVolume);
                 volume.setValue((1 - newVolumeValue) * MINIMUM_VOLUME);
             }
         }
@@ -67,20 +65,13 @@ public class AudioPlayerEntity {
 
     public void setTrackTime(double newTime) {
         if (currentTrackFormat.equals("mp3")) {
-            System.out.println(newTime);
             Duration someDuration = new Duration(mp3Player.getStopTime().toMillis() * newTime);
-            System.out.println(someDuration.toMillis());
             mp3Player.stop();
             mp3Player = new MediaPlayer(new Media(new File(filePath).toURI().toString()));
             mp3Player.setStartTime(someDuration);
             mp3Player.play();
-            System.out.println(mp3Player.getCurrentTime());
-            System.out.println(mp3Player.getStopTime());
         } else if (currentTrackFormat.equals("wav")) {
-            System.out.println("Frame length: " + wavClip.getFrameLength());
-            System.out.println("Frame position: " + wavClip.getFramePosition());
             wavClip.setFramePosition((int)(wavClip.getFrameLength() * newTime));
-            System.out.println("Frame position after change: " + wavClip.getFramePosition());
         }
     }
 
@@ -128,6 +119,9 @@ public class AudioPlayerEntity {
         } else if (currentTrackFormat.equals("wav")) {
             newValue = (double)wavClip.getFramePosition()
                     / (double)wavClip.getFrameLength();
+            if (newValue * 100 == 100) {
+                mediator.startNextTrack();
+            }
         }
         return newValue;
     }
@@ -138,6 +132,7 @@ public class AudioPlayerEntity {
                 mp3Player.stop();
             } else if (currentTrackFormat.equals("wav")) {
                 wavClip.stop();
+                wavClip.close();
             }
         }
 
@@ -150,13 +145,8 @@ public class AudioPlayerEntity {
                         new File(filePath).getAbsoluteFile());
                 wavClip = AudioSystem.getClip();
                 wavClip.open(audioInputStream);
-                wavClip.loop(Clip.LOOP_CONTINUOUSLY);
-                wavClip.addLineListener(new LineListener() {
-                    @Override
-                    public void update(LineEvent event) {
-                        
-                    }
-                });
+                wavClip.loop(0);
+
                 FloatControl volume = (FloatControl)wavClip.getControl(FloatControl.Type.MASTER_GAIN);
                 volume.setValue(volume.getMaximum());
             }
@@ -187,6 +177,7 @@ public class AudioPlayerEntity {
             }
             else if (currentTrackFormat.equals("wav")) {
                 wavClip.stop();
+                wavClip.close();
             }
             currentTrackFormat = null;
         }

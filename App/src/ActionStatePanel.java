@@ -48,6 +48,7 @@ public class ActionStatePanel {
 //                System.out.println(newTime);
                 double newSliderPosition = mediator.getCurrentSliderPosition();
                 currentTime.setValue(newSliderPosition * 100);
+//                System.out.println(newSliderPosition * 100);
 //                System.out.println(mediator.getTrackTime());
             }
         }, 0, 5*100);
