@@ -36,25 +36,9 @@ public class PlaylistManager {
 
     public PlaylistManager(Mediator mediator, BorderPane root, Scene scene) {
         this.mediator = mediator;
-//        this.root = root;
-//        this.scene = scene;
-
-//        Button track1 = new Button("1st Track");
-
-//        track1.setBorder(new Border(new BorderStroke(Color.BLACK,
-//                BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-//                new BorderWidths(0, 0, 0, 0))));
-//        track1.setStyle("-fx-border-width: 0;" +
-//                "-fx-background-color: white");
-//        track1.setMinWidth(400);
-//        tracks.add(track1);
-//        tracks.add(new Button("Hello world"));
-//        tracks.add(new Button("How are you"));
 
         playlistsButtons = new PlaylistButton[4];
-        System.out.println(playlistsButtons.length);
         for (int i = 0; i < playlistsButtons.length; i++) {
-            System.out.println(i);
             playlistsButtons[i] = new PlaylistButton();
             playlistsButtons[i].setDisable(true);
             playlistsButtons[i].playlist = null;
@@ -191,9 +175,7 @@ public class PlaylistManager {
             public void handle(MouseEvent event) {
                 int number = -1;
                 if (event.getButton().equals(MouseButton.PRIMARY)) {
-                    System.out.println("Playlist button for 0: " + playlistsButtons[0].playlist.getPlaylistName());
                     for (int i = 0; i < playlists.size() - 1; i++) {
-                        System.out.println("Playlist " + i + ": " + playlists.get(i).getPlaylistName());
                         if (playlists.get(i).equals(playlistsButtons[0].playlist)) {
                             number = i;
                         }
@@ -207,15 +189,9 @@ public class PlaylistManager {
                         playlistsButtons[i].playlist = playlistsButtons[i - 1].playlist;
                         playlistsButtons[i].setText(playlistsButtons[i].playlist.getPlaylistName());
                     }
-//                    if (number + 1 < playlists.size()) {
                     playlistsButtons[0].playlist = playlists.get(number - 1);
                     playlistsButtons[0].setText(
                             playlistsButtons[0].playlist.getPlaylistName());
-//                    }
-//                    else {
-//                        playlistsButtons[playlistsButtons.length - 1].playlist = null;
-//                        playlistsButtons[playlistsButtons.length - 1].setText("");
-//                    }
                     refreshArrowsKeys();
                 }
             }
@@ -240,10 +216,7 @@ public class PlaylistManager {
                         return;
                     }
 
-                    System.out.println("buttons length: " + playlistsButtons.length);
                     for (int i = 0; i < playlistsButtons.length - 1; i++) {
-                        System.out.println(i + " was processed");
-//                        playlistsButtons[i] = playlistsButtons[i + 1];
                         playlistsButtons[i].playlist = playlistsButtons[i + 1].playlist;
                         playlistsButtons[i].setText(playlistsButtons[i].playlist.getPlaylistName());
                     }
@@ -284,11 +257,6 @@ public class PlaylistManager {
                 playlistButton.playlist = playlists.get(playlists.size() - 1);
                 playlistButton.setText(playlistButton.playlist.getPlaylistName());
                 playlistButton.setDisable(false);
-                if (playlists.get(0) == null) {
-                    System.out.println("Something went wrong");
-                } else {
-                    System.out.println(playlists.get(0).getPlaylistName() + playlists.size());
-                }
                 break;
             }
         }
@@ -370,7 +338,6 @@ public class PlaylistManager {
             if (playlistsButtons[playlistsButtons.length - 1].playlist != null) {
                 int playlistIndex = playlists.indexOf(
                         playlistsButtons[playlistsButtons.length - 1].playlist);
-                System.out.println("Index is: " + playlistIndex);
                 if (playlists.size() < playlistIndex + 2) {
                     playlistsButtons[playlistsButtons.length - 1].playlist = null;
                     playlistsButtons[playlistsButtons.length - 1].setText("");

@@ -1,5 +1,7 @@
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
@@ -7,9 +9,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
+import javafx.scene.control.Label;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Font;
 import java.util.TimerTask;
 
 public class ActionStatePanel {
@@ -23,42 +26,14 @@ public class ActionStatePanel {
     private ToggleButton shuffle = new ToggleButton();
     private ToggleButton repeat = new ToggleButton();
     private JLabel trackTime = new JLabel();
-
-    private boolean playStatus = false;
+    private Label trackName = new Label();
 
     public ActionStatePanel(Mediator mediator) {
         this.mediator = mediator;
         configPlayButtons();
         configFunctionsButtons();
         configSliders();
-
-        trackTime.setSize(70,30);
-
-        new java.util.Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-//                counter++;
-                trackTime.setText(mediator.getTrackTime());
-//                String newTime = mediator.getTrackTime();
-//                if (counter == 2) {
-//                    trackTime.setText(newTime);
-//                    counter = 0;
-//                }
-//                trackTime.setText(newTime);
-//                System.out.println(newTime);
-                double newSliderPosition = mediator.getCurrentSliderPosition();
-                currentTime.setValue(newSliderPosition * 100);
-//                System.out.println(newSliderPosition * 100);
-//                System.out.println(mediator.getTrackTime());
-            }
-        }, 0, 5*100);
-//        trackTime.setText("121:50");
-//        trackTime.setFont(new Font("Arial", 20));
-//        trackTime.setBorder(new Border(new BorderStroke(Color.BLACK,
-//                BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-//                new BorderWidths(4, 4, 4, 4))));
-        trackTime.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
-        trackTime.setFont(new java.awt.Font(Font.SERIF, Font.PLAIN, 22));
+        configLabels();
     }
 
     private void configPlayButtons() {
@@ -70,7 +45,7 @@ public class ActionStatePanel {
         setListenersForNextTrackButton();
         setListenersForPreviousTrackButton();
 
-        setCircleButtonBack(stopPlay, "stop.png");
+        setCircleButtonBack(stopPlay, "play.png");
         setCircleButtonBack(nextTrack, "nextTrack.png");
         setCircleButtonBack(prevTrack, "previousTrack.png");
     }
@@ -91,39 +66,25 @@ public class ActionStatePanel {
     private void configSliders() {
         volume.setOrientation(Orientation.VERTICAL);
         currentTime.setOrientation(Orientation.HORIZONTAL);
-//        volume.setPrefHeight(70);
-//        volume.setShowTickMarks(true);
         volume.setPrefSize(20,70);
         volume.setValue(100);
         volume.setMajorTickUnit(10);
         volume.setMinorTickCount(0);
-//        volume.setShowTickLabels(true);
         volume.setLayoutX(370);
         volume.setLayoutY(30);
         volume.valueProperty().addListener(
                 (observable, oldValue, newValue) ->
                 {
                     int i = newValue.intValue();
-//                    System.out.println("Volume is : " + i);
                     float newVolume = (float)i / 100;
                     mediator.setNewVolume(newVolume);
                 }
         );
         currentTime.setPrefSize(220,30);
-//        currentTime.setShowTickMarks(true);
         currentTime.setMajorTickUnit(10);
         currentTime.setMinorTickCount(0);
-//        currentTime.setShowTickLabels(true);
         currentTime.setLayoutX(10);
-        currentTime.setLayoutY(60);
-//        currentTime.valueProperty().addListener(
-//                (observable, oldValue, newValue) ->
-//                {
-//                    int i = newValue.intValue();
-//                    float newTime = (float)i / 100;
-//                    mediator.setNewTrackTime(newTime);
-//                }
-//        );
+        currentTime.setLayoutY(70);
         currentTime.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -133,6 +94,27 @@ public class ActionStatePanel {
 
     }
 
+    private void configLabels() {
+        trackTime.setSize(70,30);
+
+        new java.util.Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                trackTime.setText(mediator.getTrackTime());
+                double newSliderPosition = mediator.getCurrentSliderPosition();
+                currentTime.setValue(newSliderPosition * 100);
+            }
+        }, 0, 5*100);
+        trackTime.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+        trackTime.setFont(new java.awt.Font(Font.SERIF, Font.PLAIN, 22));
+
+        trackName.setPrefSize(230, 30);
+        trackName.setLayoutX(10);
+        trackName.setLayoutY(20);
+        trackName.setAlignment(Pos.CENTER);
+        trackName.setFont(new javafx.scene.text.Font(18));
+    }
+
     private void setListenersForNextTrackButton() {
         nextTrack.setLayoutX(160);
         nextTrack.setLayoutY(130);
@@ -140,7 +122,6 @@ public class ActionStatePanel {
             @Override
             public void handle(MouseEvent event) {
                 mediator.startNextTrack();
-                System.out.println("Next track button was clicked!!!");
             }
         });
     }
@@ -152,30 +133,19 @@ public class ActionStatePanel {
             @Override
             public void handle(MouseEvent event) {
                 mediator.startPrevTrack();
-                System.out.println("Previous track button was clicked!!!");
             }
         });
     }
 
     private void setListenersForStopPlayButton() {
-        stopPlay.setLayoutX(90);
-        stopPlay.setLayoutY(130);
-        stopPlay.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        stopPlay.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(MouseEvent event) {
+            public void handle(ActionEvent event) {
                 mediator.stopPlayTrack();
-                if (playStatus) {
-                    playStatus = false;
-                    setCircleButtonBack(stopPlay, "play.png");
-                    System.out.println("Now it's playing");
-                }
-                else {
-                    playStatus = true;
-                    setCircleButtonBack(stopPlay, "stop.png");
-                    System.out.println("Now it's stopping");
-                }
             }
         });
+        stopPlay.setLayoutX(90);
+        stopPlay.setLayoutY(130);
     }
 
     private void configCircleButton(Button button) {
@@ -188,7 +158,7 @@ public class ActionStatePanel {
     }
 
     private void setCircleButtonBack(Button button, String picture) {
-        Image image = new Image("File:/..pictures/" + picture);
+        Image image = new Image("File:/../pictures/" + picture);
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(35);
         imageView.setFitWidth(35);
@@ -196,7 +166,7 @@ public class ActionStatePanel {
     }
 
     private void setToggleButtonBack(ToggleButton button, String picture) {
-        Image image = new Image("File:/..pictures/" + picture);
+        Image image = new Image("File:/../pictures/" + picture);
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(50);
         imageView.setFitWidth(50);
@@ -241,5 +211,21 @@ public class ActionStatePanel {
 
     public JLabel getTrackTime() {
         return trackTime;
+    }
+
+    public Label getTrackName() {
+        return trackName;
+    }
+
+    public void setPlayImage() {
+        setCircleButtonBack(stopPlay,"play.png");
+    }
+
+    public void setStopImage() {
+        setCircleButtonBack(stopPlay, "stop.png");
+    }
+
+    public void setTrackName(String trackName) {
+        this.trackName.setText(trackName);
     }
 }

@@ -12,9 +12,9 @@ public class Mediator {
         playlistManager = new PlaylistManager(this, root, scene);
     }
 
-    public AudioPlayerEntity getAudioPlayer() {
-        return audioPlayer;
-    }
+//    public AudioPlayerEntity getAudioPlayer() {
+//        return audioPlayer;
+//    }
 
     public ActionStatePanel getActStatePanel() {
         return actStatePanel;
@@ -54,6 +54,7 @@ public class Mediator {
             String newTrack = playlistManager.getNextTrack(currentTrack);
             if (newTrack != null) {
                 audioPlayer.startNewTrack(newTrack);
+                actStatePanel.setStopImage();
             }
             else {
                 audioPlayer.resetTrack();
@@ -70,6 +71,7 @@ public class Mediator {
             String newTrack = playlistManager.getPrevTrack(currentTrack);
             if (newTrack != null) {
                 audioPlayer.startNewTrack(newTrack);
+                actStatePanel.setStopImage();
             }
             else {
                 audioPlayer.resetTrack();
@@ -81,6 +83,7 @@ public class Mediator {
     }
 
     public void resetTrack() {
+        actStatePanel.setPlayImage();
         audioPlayer.resetTrack();
     }
 
@@ -90,5 +93,17 @@ public class Mediator {
 
     public boolean isShuffleTurnedOn() {
         return actStatePanel.isShuffleTurnedOn();
+    }
+
+    public void setPlayImage() {
+        actStatePanel.setPlayImage();
+    }
+
+    public void setStopImage() {
+        actStatePanel.setStopImage();
+    }
+
+    public void setTrackName(String trackName) {
+        actStatePanel.setTrackName(trackName);
     }
 }

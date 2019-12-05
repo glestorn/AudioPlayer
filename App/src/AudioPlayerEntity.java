@@ -1,6 +1,3 @@
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -12,10 +9,7 @@ import java.io.IOException;
 public class AudioPlayerEntity {
     private Mediator mediator;
     private String filePath;
-//    private Long currentFrame;
     private Clip wavClip;
-//    private String status;
-//    private AudioInputStream audioInputStream;
     private String currentTrackFormat;
     private MediaPlayer mp3Player;
 
@@ -26,20 +20,27 @@ public class AudioPlayerEntity {
     }
 
     public void stopPlayTrack() {
+        if (currentTrackFormat == null) {
+            return;
+        }
         if (currentTrackFormat.equals("mp3")) {
             if (mp3Player.getStatus().equals(MediaPlayer.Status.PAUSED)) {
                 mp3Player.play();
+                mediator.setStopImage();
             }
             else {
                 mp3Player.pause();
+                mediator.setPlayImage();
             }
         }
         else if (currentTrackFormat.equals("wav")) {
             if (wavClip.isRunning()) {
                 wavClip.stop();
+                mediator.setPlayImage();
             }
             else {
                 wavClip.start();
+                mediator.setStopImage();
             }
         }
     }
@@ -57,7 +58,6 @@ public class AudioPlayerEntity {
             }
             else {
                 newVolumeValue = (float)(newVolume * 2);
-                float middleVolume = newVolumeValue * MINIMUM_VOLUME;
                 volume.setValue((1 - newVolumeValue) * MINIMUM_VOLUME);
             }
         }
@@ -137,6 +137,12 @@ public class AudioPlayerEntity {
         }
 
         this.filePath = filePath;
+        mediator.setStopImage();
+        String trackName = filePath;
+        while (trackName.contains("\\")) {
+            trackName = trackName.substring(trackName.indexOf("\\") + 1);
+        }
+        mediator.setTrackName(trackName.substring(0, trackName.indexOf(".")));
 
         if (filePath.endsWith(".wav")) {
             try {
@@ -180,6 +186,7 @@ public class AudioPlayerEntity {
                 wavClip.close();
             }
             currentTrackFormat = null;
+            mediator.setTrackName("");
         }
     }
 

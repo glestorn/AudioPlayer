@@ -11,10 +11,11 @@ public class MainWindow extends Application {
 
     public void start(Stage primaryStage) {
         try {
+            primaryStage.setResizable(false);
             BorderPane root = new BorderPane();
             root.setLayoutX(0);
             root.setLayoutY(0);
-            Scene scene = new Scene(root, 400, 600);
+            Scene scene = new Scene(root, 390, 600);
             primaryStage.setScene(scene);
             primaryStage.setTitle("EnjoyPlayer");
             primaryStage.show();
@@ -22,7 +23,7 @@ public class MainWindow extends Application {
             mediator = new Mediator(root, scene);
 
             Label borderForTimer = new Label();
-            borderForTimer.setLayoutX(261);
+            borderForTimer.setLayoutX(273);
             borderForTimer.setLayoutY(26);
             borderForTimer.setPrefSize(67,45);
             borderForTimer.setBorder(new Border(new BorderStroke(Color.BLACK,
@@ -30,14 +31,11 @@ public class MainWindow extends Application {
                 new BorderWidths(4, 4, 4, 4))));
             SwingNode trackTime = new SwingNode();
             trackTime.setContent(mediator.getActStatePanel().getTrackTime());
-            trackTime.setLayoutX(265);
+            trackTime.setLayoutX(277);
             trackTime.setLayoutY(30);
 
             Pane somePane = new Pane();
             somePane.setPrefSize(400,600);
-//            somePane.setBorder(new Border(new BorderStroke(Color.BLACK,
-//                BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-//                new BorderWidths(4, 4, 4, 4))));
             somePane.getChildren().add(mediator.getActStatePanel().getNextTrack());
             somePane.getChildren().add(mediator.getActStatePanel().getStopPlay());
             somePane.getChildren().add(mediator.getActStatePanel().getPrevTrack());
@@ -45,12 +43,11 @@ public class MainWindow extends Application {
             somePane.getChildren().add(mediator.getActStatePanel().getCurrentTime());
             somePane.getChildren().add(mediator.getActStatePanel().getShuffle());
             somePane.getChildren().add(mediator.getActStatePanel().getRepeat());
+            somePane.getChildren().add(mediator.getActStatePanel().getTrackName());
             somePane.getChildren().add(borderForTimer);
             somePane.getChildren().add(trackTime);
             somePane.getChildren().add(mediator.getPlaylistManager().getConfigButtonsBox());
-//            somePane.getChildren().add(mediator.getPlaylistManager().getBoxForTracksButtons());
             somePane.getChildren().add(mediator.getPlaylistManager().getScrollPane());
-//            somePane.getChildren().add(mediator.getActStatePanel().getTrackTime());
 
             root.getChildren().add(somePane);
         }

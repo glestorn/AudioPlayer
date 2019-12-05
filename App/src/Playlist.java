@@ -1,4 +1,5 @@
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -88,20 +89,18 @@ public class Playlist {
             JSONObject object = (JSONObject)tracks.get(i);
             TrackButton temp = new TrackButton();
             temp.path = object.get("path").toString();
-            temp.track = object.get("name").toString().substring(0,
+            temp.track = (i + 1) + ". " + object.get("name").toString().substring(0,
                     object.get("name").toString().indexOf("."));
             temp.setText(temp.track);
-            temp.setStyle("-fx-border-width: 0;" +
-                "-fx-background-color: whitedef");
+            temp.setTextAlignment(TextAlignment.LEFT);
+            temp.setStyle("-fx-border-width: 0;" + "-fx-alignment: LEFT;");
+//                "-fx-background-color: whitedef");
             temp.setFont(new Font(20));
             temp.setMinWidth(400);
             tracksPaths.add(temp.path);
             tracksNames.add(temp.track);
             trackButtons.add(temp);
-            System.out.println("Track path is: " + temp.path);
-            System.out.println("Track name is: " +temp.track);
         }
-
         return trackButtons;
     }
 

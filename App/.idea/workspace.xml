@@ -3,7 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="315aa750-3ea0-4e22-9097-5d0a8ba80b78" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/ActionStatePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/ActionStatePanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/ActionStatePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/ActionStatePanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/ActionStatePanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/ActionStatePanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/ActionStatePanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/ActionStatePanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/ActionStatePanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/ActionStatePanel$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/ActionStatePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/ActionStatePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/AudioPlayerEntity$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/AudioPlayerEntity$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/AudioPlayerEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/AudioPlayerEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/MainWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/Mediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/Mediator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/Playlist.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/Playlist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/PlaylistManager$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/PlaylistManager$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/PlaylistManager$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/PlaylistManager$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/App/PlaylistManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/App/PlaylistManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pictures/.picasa.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pictures/.picasa.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pictures/play.png" beforeDir="false" afterPath="$PROJECT_DIR$/pictures/play.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pictures/previousTrack.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pictures/repeat.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActionStatePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActionStatePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AudioPlayerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AudioPlayerEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlaylistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlaylistManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,20 +50,19 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PlaylistManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="278" column="5" lean-forward="true" selection-start-line="278" selection-start-column="5" selection-end-line="278" selection-end-column="5" />
+            <state relative-caret-position="-33">
+              <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#15538#15539#0" expanded="true" />
-                <element signature="e#15618#15619#0" expanded="true" />
-                <element signature="e#15704#15705#0" expanded="true" />
-                <element signature="e#15772#15773#0" expanded="true" />
-                <element signature="e#15804#15805#0" expanded="true" />
-                <marker date="1575522457509" expanded="true" signature="8069:9253" ph="..." />
+                <element signature="e#13880#13881#0" expanded="true" />
+                <element signature="e#13960#13961#0" expanded="true" />
+                <element signature="e#14046#14047#0" expanded="true" />
+                <element signature="e#14120#14121#0" expanded="true" />
+                <marker date="1575537662014" expanded="true" signature="7425:8609" ph="..." />
               </folding>
             </state>
           </provider>
@@ -68,18 +89,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Playlist.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1491">
-              <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
+            <state relative-caret-position="1645">
+              <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#381#382#0" expanded="true" />
-                <element signature="e#416#417#0" expanded="true" />
-                <element signature="e#455#456#0" expanded="true" />
-                <element signature="e#486#487#0" expanded="true" />
-                <element signature="e#3387#3388#0" expanded="true" />
-                <element signature="e#3421#3422#0" expanded="true" />
-                <element signature="e#3470#3471#0" expanded="true" />
-                <element signature="e#3503#3504#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,15 +101,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AudioPlayerEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2345">
-              <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
+            <state relative-caret-position="259">
+              <caret line="157" column="13" lean-forward="true" selection-start-line="157" selection-start-column="13" selection-end-line="157" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#855#856#0" expanded="true" />
-                <element signature="e#895#896#0" expanded="true" />
-                <element signature="e#7228#7229#0" expanded="true" />
-                <element signature="e#7293#7294#0" expanded="true" />
-                <element signature="e#6310#6311#0" expanded="true" />
+                <element signature="e#6301#6302#0" expanded="true" />
+                <element signature="e#6332#6333#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,17 +115,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mediator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="77" column="14" lean-forward="true" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
+            <state relative-caret-position="289">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1128#1129#0" expanded="true" />
                 <element signature="e#1189#1190#0" expanded="true" />
-                <element signature="e#1243#1244#0" expanded="true" />
-                <element signature="e#1294#1295#0" expanded="true" />
-                <element signature="e#2290#2291#0" expanded="true" />
-                <element signature="e#2386#2387#0" expanded="true" />
-                <element signature="e#2484#2485#0" expanded="true" />
+                <element signature="e#2461#2462#0" expanded="true" />
+                <element signature="e#2516#2517#0" expanded="true" />
+                <element signature="e#2558#2559#0" expanded="true" />
+                <element signature="e#2614#2615#0" expanded="true" />
+                <element signature="e#2726#2727#0" expanded="true" />
+                <element signature="e#2770#2771#0" expanded="true" />
+                <element signature="e#2824#2825#0" expanded="true" />
+                <element signature="e#2868#2869#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,8 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="48" column="50" lean-forward="true" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+            <state relative-caret-position="-369">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,26 +146,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ActionStatePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+            <state relative-caret-position="269">
+              <caret line="136" column="11" lean-forward="true" selection-start-line="136" selection-start-column="11" selection-end-line="136" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1126#1873#0" expanded="true" />
-                <element signature="e#1872#1873#0" expanded="true" />
-                <element signature="e#6725#6726#0" expanded="true" />
-                <element signature="e#7420#7421#0" expanded="true" />
-                <element signature="e#7503#7504#0" expanded="true" />
-                <element signature="e#7571#7572#0" expanded="true" />
-                <element signature="e#7639#7640#0" expanded="true" />
-                <element signature="e#7705#7706#0" expanded="true" />
-                <element signature="e#7773#7774#0" expanded="true" />
-                <element signature="e#7843#7844#0" expanded="true" />
-                <element signature="e#7915#7916#0" expanded="true" />
-                <element signature="e#7977#7978#0" expanded="true" />
-                <element signature="e#8045#8046#0" expanded="true" />
+                <element signature="e#3229#3527#0" expanded="true" />
+                <element signature="e#3526#3527#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -176,11 +178,11 @@
         <option value="$PROJECT_DIR$/src/PlaylistButton.java" />
         <option value="$PROJECT_DIR$/App.iml" />
         <option value="$PROJECT_DIR$/src/TrackButton.java" />
-        <option value="$PROJECT_DIR$/src/Playlist.java" />
-        <option value="$PROJECT_DIR$/src/Mediator.java" />
         <option value="$PROJECT_DIR$/src/ActionStatePanel.java" />
-        <option value="$PROJECT_DIR$/src/AudioPlayerEntity.java" />
         <option value="$PROJECT_DIR$/src/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/Mediator.java" />
+        <option value="$PROJECT_DIR$/src/Playlist.java" />
+        <option value="$PROJECT_DIR$/src/AudioPlayerEntity.java" />
         <option value="$PROJECT_DIR$/src/PlaylistManager.java" />
       </list>
     </option>
@@ -197,6 +199,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,7 +217,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -224,7 +226,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575522406709" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575531393973" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libraries/gson-2.2.2.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -269,12 +271,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575058768777</updated>
-      <workItem from="1575058771850" duration="99085000" />
+      <workItem from="1575058771850" duration="103653000" />
+      <workItem from="1575534899764" duration="3850000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99085000" />
+    <option name="totallyTimeSpent" value="107503000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -289,35 +292,35 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" weight="0.3289689" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,20 +363,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Playlist.java">
+    <entry file="file://$PROJECT_DIR$/src/AudioPlayerEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1491">
-          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
+        <state relative-caret-position="259">
+          <caret line="157" column="13" lean-forward="true" selection-start-line="157" selection-start-column="13" selection-end-line="157" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#381#382#0" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#455#456#0" expanded="true" />
-            <element signature="e#486#487#0" expanded="true" />
-            <element signature="e#3387#3388#0" expanded="true" />
-            <element signature="e#3421#3422#0" expanded="true" />
-            <element signature="e#3470#3471#0" expanded="true" />
-            <element signature="e#3503#3504#0" expanded="true" />
+            <element signature="e#6301#6302#0" expanded="true" />
+            <element signature="e#6332#6333#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-369">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mediator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1128#1129#0" expanded="true" />
+            <element signature="e#1189#1190#0" expanded="true" />
+            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#2516#2517#0" expanded="true" />
+            <element signature="e#2558#2559#0" expanded="true" />
+            <element signature="e#2614#2615#0" expanded="true" />
+            <element signature="e#2726#2727#0" expanded="true" />
+            <element signature="e#2770#2771#0" expanded="true" />
+            <element signature="e#2824#2825#0" expanded="true" />
+            <element signature="e#2868#2869#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Playlist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1645">
+          <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -385,83 +422,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActionStatePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1126#1873#0" expanded="true" />
-            <element signature="e#1872#1873#0" expanded="true" />
-            <element signature="e#6725#6726#0" expanded="true" />
-            <element signature="e#7420#7421#0" expanded="true" />
-            <element signature="e#7503#7504#0" expanded="true" />
-            <element signature="e#7571#7572#0" expanded="true" />
-            <element signature="e#7639#7640#0" expanded="true" />
-            <element signature="e#7705#7706#0" expanded="true" />
-            <element signature="e#7773#7774#0" expanded="true" />
-            <element signature="e#7843#7844#0" expanded="true" />
-            <element signature="e#7915#7916#0" expanded="true" />
-            <element signature="e#7977#7978#0" expanded="true" />
-            <element signature="e#8045#8046#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AudioPlayerEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2345">
-          <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#855#856#0" expanded="true" />
-            <element signature="e#895#896#0" expanded="true" />
-            <element signature="e#7228#7229#0" expanded="true" />
-            <element signature="e#7293#7294#0" expanded="true" />
-            <element signature="e#6310#6311#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mediator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="77" column="14" lean-forward="true" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1128#1129#0" expanded="true" />
-            <element signature="e#1189#1190#0" expanded="true" />
-            <element signature="e#1243#1244#0" expanded="true" />
-            <element signature="e#1294#1295#0" expanded="true" />
-            <element signature="e#2290#2291#0" expanded="true" />
-            <element signature="e#2386#2387#0" expanded="true" />
-            <element signature="e#2484#2485#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="48" column="50" lean-forward="true" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PlaylistManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="278" column="5" lean-forward="true" selection-start-line="278" selection-start-column="5" selection-end-line="278" selection-end-column="5" />
+        <state relative-caret-position="-33">
+          <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#15538#15539#0" expanded="true" />
-            <element signature="e#15618#15619#0" expanded="true" />
-            <element signature="e#15704#15705#0" expanded="true" />
-            <element signature="e#15772#15773#0" expanded="true" />
-            <element signature="e#15804#15805#0" expanded="true" />
-            <marker date="1575522457509" expanded="true" signature="8069:9253" ph="..." />
+            <element signature="e#13880#13881#0" expanded="true" />
+            <element signature="e#13960#13961#0" expanded="true" />
+            <element signature="e#14046#14047#0" expanded="true" />
+            <element signature="e#14120#14121#0" expanded="true" />
+            <marker date="1575537662014" expanded="true" signature="7425:8609" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActionStatePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="136" column="11" lean-forward="true" selection-start-line="136" selection-start-column="11" selection-end-line="136" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3229#3527#0" expanded="true" />
+            <element signature="e#3526#3527#0" expanded="true" />
           </folding>
         </state>
       </provider>
