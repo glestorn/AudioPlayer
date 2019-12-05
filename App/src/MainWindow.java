@@ -48,7 +48,8 @@ public class MainWindow extends Application {
             somePane.getChildren().add(borderForTimer);
             somePane.getChildren().add(trackTime);
             somePane.getChildren().add(mediator.getPlaylistManager().getConfigButtonsBox());
-            somePane.getChildren().add(mediator.getPlaylistManager().getBoxForTracksButtons());
+//            somePane.getChildren().add(mediator.getPlaylistManager().getBoxForTracksButtons());
+            somePane.getChildren().add(mediator.getPlaylistManager().getScrollPane());
 //            somePane.getChildren().add(mediator.getActStatePanel().getTrackTime());
 
             root.getChildren().add(somePane);

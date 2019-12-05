@@ -22,7 +22,7 @@ public class PlaylistManager {
     private Mediator mediator;
     private HBox configButtonsBox = new HBox();
     private VBox boxForTracksButtons = new VBox();
-    private Slider vboxSlider = new Slider();
+    private ScrollPane scrollPane = new ScrollPane();
     private PlaylistButton[] playlistsButtons;
     private Button addPlaylistButton = new Button();
     private Button nextPlaylistButton = new Button();
@@ -266,13 +266,16 @@ public class PlaylistManager {
         someScrollPane.setContent(boxForTracksButtons);
         boxForTracksButtons.setPrefSize(400, 370);
         boxForTracksButtons.setLayoutX(0);
-        boxForTracksButtons.setLayoutY(230);
+        boxForTracksButtons.setLayoutY(0);
 
         loadPlaylists(new File("File:/../playlists"));
-//        for (Button trackButton : tracks) {
-//            boxForTracksButtons.getChildren().add(trackButton);
-//        }
 
+        scrollPane.setLayoutX(0);
+        scrollPane.setLayoutY(230);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setPrefSize(400,370);
+        scrollPane.setContent(boxForTracksButtons);
     }
 
     private void addPlaylistRefresh() {
@@ -321,6 +324,10 @@ public class PlaylistManager {
 
     public VBox getBoxForTracksButtons() {
         return boxForTracksButtons;
+    }
+
+    public ScrollPane getScrollPane() {
+        return scrollPane;
     }
 
     private void addFiles() {
