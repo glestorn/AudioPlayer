@@ -1,3 +1,4 @@
+import javafx.geometry.Pos;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import org.json.simple.parser.JSONParser;
@@ -93,8 +94,9 @@ public class Playlist {
                     object.get("name").toString().indexOf("."));
             temp.setText(temp.track);
             temp.setTextAlignment(TextAlignment.LEFT);
-            temp.setStyle("-fx-border-width: 0;" + "-fx-alignment: LEFT;");
-//                "-fx-background-color: whitedef");
+            temp.setStyle("-fx-border-width: 0;");
+//                            "-fx-background-color: whitedef");
+            temp.setAlignment(Pos.BASELINE_LEFT);
             temp.setFont(new Font(20));
             temp.setMinWidth(400);
             tracksPaths.add(temp.path);

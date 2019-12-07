@@ -88,7 +88,7 @@ public class ActionStatePanel {
         currentTime.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                mediator.setNewVolume((float)(currentTime.getValue() / 100));
+                mediator.setTrackTime(currentTime.getValue() / 100);
             }
         });
 

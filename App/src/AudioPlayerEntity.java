@@ -46,6 +46,9 @@ public class AudioPlayerEntity {
     }
 
     public void setVolume(double newVolume) {
+        if (currentTrackFormat == null) {
+            return;
+        }
         if (currentTrackFormat.equals("mp3")) {
             mp3Player.setVolume(newVolume); // from 0 to 1
         }
@@ -64,6 +67,9 @@ public class AudioPlayerEntity {
     }
 
     public void setTrackTime(double newTime) {
+        if (currentTrackFormat == null) {
+            return;
+        }
         if (currentTrackFormat.equals("mp3")) {
             Duration someDuration = new Duration(mp3Player.getStopTime().toMillis() * newTime);
             mp3Player.stop();
@@ -83,11 +89,17 @@ public class AudioPlayerEntity {
             return "  0:00";
         }
         else if (currentTrackFormat.equals("mp3")) {
+            if (mp3Player == null) {
+                return "  0:00";
+            }
             double allSeconds = mp3Player.getCurrentTime().toMillis() / 1000;
             minutes = (int)(allSeconds / 60);
             seconds = (int)(allSeconds % 60);
         }
         else if (currentTrackFormat.equals("wav")) {
+            if (wavClip == null) {
+                return "  0:00";
+            }
             double allSeconds = (double)wavClip.getMicrosecondPosition() / 1000000;
             minutes = (int)(allSeconds / 60);
             seconds = (int)(allSeconds % 60);
@@ -114,9 +126,15 @@ public class AudioPlayerEntity {
             return 0;
         }
         if (currentTrackFormat.equals("mp3")) {
+            if (mp3Player == null) {
+                return 0;
+            }
             newValue = mp3Player.getCurrentTime().toMillis()
                     / mp3Player.getStopTime().toMillis();
         } else if (currentTrackFormat.equals("wav")) {
+            if (wavClip == null) {
+                return 0;
+            }
             newValue = (double)wavClip.getFramePosition()
                     / (double)wavClip.getFrameLength();
             if (newValue * 100 == 100) {

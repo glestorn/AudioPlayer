@@ -32,7 +32,7 @@ public class Mediator {
         audioPlayer.setVolume(newVolume);
     }
 
-    public void setNewTrackTime(double newTrackTime) {
+    public void setTrackTime(double newTrackTime) {
         audioPlayer.setTrackTime(newTrackTime);
     }
 
